@@ -1,0 +1,42 @@
+@import url(../index.css);
+
+nav {
+  width: 100%;
+  height: 4em;
+  position: fixed;
+  display: inline-grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0 1.25em;
+  background-color: var(--white);
+  box-shadow: var(--card-box-shadow);
+  top: 0;
+}
+
+nav.home-screen {
+  background-color: var(--background-light);
+  box-shadow: none;
+  z-index: -100;
+}
+
+button.nav-item {
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+button.nav-item:hover,
+button.nav-item:focus {
+  background-color: var(--background-light);
+}
+
+li.nav-item {
+  height: 1.5em;
+  width: 1.5em;
+}

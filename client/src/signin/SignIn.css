@@ -1,0 +1,9 @@
+@import url(../index.css);
+
+.sign-in-card {
+  background-color: var(--white);
+  width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}

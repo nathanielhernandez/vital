@@ -1,0 +1,9 @@
+@import url(../index.css);
+
+.dashboard-container {
+  width: 100%;
+  padding: 1.25em;
+  display: inline-grid;
+  grid-template-columns: 200px 1fr 200px;
+  gap: 1.25em;
+}

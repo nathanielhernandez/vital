@@ -1,0 +1,7 @@
+@import url(../../index.css);
+
+.create-offer-modal {
+  max-width: 800px;
+  width: 40%;
+  min-width: 500px;
+}

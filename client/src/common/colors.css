@@ -1,0 +1,17 @@
+:root {
+  --vital-teal: #2cb1bc;
+  --background-light: #f0f4f8;
+  --border-light: rgba(178, 192, 200, 0.5);
+  --notification-red: #ff5555;
+  --input-white: #ffffff;
+  --light-gray: #999;
+  --gray: #666;
+  --dark-gray: #333;
+  --white: #fff;
+  --active-green: #2cbc88;
+  --vital-teal-dark: #2f98a0;
+  --shadow-light: rgba(178, 192, 200, 0.2);
+  --tag-background: #e0e5eb;
+  --tag-background-hover: #c9d0d9;
+  --btn-focus: rgba(44, 177, 188, 0.4);
+}
