@@ -1,7 +1,7 @@
 import React from "react";
-import "./Loader.css";
+import "./SpinningLoader.css";
 
-const Loader = () => {
+const SpinningLoader = () => {
   return (
     <div className="lds-wrapper">
       <div className="lds-ellipsis">
@@ -14,4 +14,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default SpinningLoader;

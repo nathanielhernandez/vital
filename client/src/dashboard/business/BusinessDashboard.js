@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Loader from "../../components/loader/Loader";
+import SpinningLoader from "../../components/loaders/SpinningLoader";
 import Offer from "../Offer";
 import ProfileSidebar from "../personal/ProfileSidebar";
 import TypeOffer from "./TypeOffer";
@@ -26,7 +26,7 @@ const BusinessDashboard = () => {
           <button onClick={openModal}>
             <TypeOffer />
           </button>
-          {isLoading && <Loader />}
+          {isLoading && <SpinningLoader />}
           {offers.map((offer) => {
             return <Offer offer={offer} key={offer._id} />;
           })}
