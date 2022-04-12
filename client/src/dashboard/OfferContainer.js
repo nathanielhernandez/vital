@@ -1,12 +1,15 @@
 import React, { useState, useRef, useCallback } from "react";
 import useGetOffers from "../hooks/useGetOffers";
 import Offer from "./Offer";
+import PostOffersButton from "./PostOffersButton";
 import NoOffers from "./NoOffers";
 import SpinningLoader from "../components/loaders/SpinningLoader";
+import ModalWrapper from "../components/modal/ModalWrapper";
+import PostOffer from "./PostOffer";
 import { useAppContext } from "../context/appContext";
 
 const OfferContainer = () => {
-  const { user } = useAppContext();
+  const { user, isModalOpen } = useAppContext();
   const [pageNumber, setPageNumber] = useState(1);
   const { offers, hasMore, loading, error } = useGetOffers(pageNumber);
 
@@ -27,7 +30,8 @@ const OfferContainer = () => {
 
   return (
     <div className="form-layout-left-aligned">
-      {user.accountType === "Business" && "test"}
+      {isModalOpen && <ModalWrapper component={<PostOffer />} />}
+      {user.accountType === "Business" && <PostOffersButton />}
 
       {offers.length < 1 && !loading ? (
         <NoOffers />

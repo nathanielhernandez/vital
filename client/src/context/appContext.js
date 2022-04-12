@@ -144,19 +144,16 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const getOffers = async (offersPageNumber) => {
+  const getOffers = async () => {
     dispatch({ type: GET_OFFERS_BEGIN });
     try {
-      const { data } = await axios.get("/api/v1/offer/getoffers", {
-        params: { page: offersPageNumber },
-      });
+      const { data } = await axios.get("/api/v1/offer/getoffers");
       const { offers, totalOffers } = data;
       dispatch({
         type: GET_OFFERS_SUCCESS,
         payload: {
           offers,
           totalOffers,
-          offersPageNumber,
         },
       });
     } catch (error) {

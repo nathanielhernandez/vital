@@ -1,0 +1,8 @@
+@import url("../index.css");
+
+button.card-button {
+  font-size: 1em;
+  color: var(--light-gray);
+  border: none;
+  text-align: left;
+}

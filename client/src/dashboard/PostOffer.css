@@ -1,0 +1,8 @@
+@import url(../index.css);
+
+.modal-standard {
+  display: flex;
+  width: 50em;
+  min-width: 40em;
+  margin: 1.25em;
+}
