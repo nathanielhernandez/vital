@@ -36,12 +36,10 @@ const initialState = {
   alertType: "",
   user: user ? JSON.parse(user) : null,
   token: token,
-  userLocation: userLocation || "",
   jobLocation: "",
   offers: [],
-  userList: [],
   totalOffers: null,
-
+  offersPageNumber: 1,
   isModalOpen: false,
 };
 
@@ -146,16 +144,19 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const getOffers = async () => {
+  const getOffers = async (offersPageNumber) => {
     dispatch({ type: GET_OFFERS_BEGIN });
     try {
-      const { data } = await axios.get("/api/v1/offer/getoffers");
+      const { data } = await axios.get("/api/v1/offer/getoffers", {
+        params: { page: offersPageNumber },
+      });
       const { offers, totalOffers } = data;
       dispatch({
         type: GET_OFFERS_SUCCESS,
         payload: {
           offers,
           totalOffers,
+          offersPageNumber,
         },
       });
     } catch (error) {
@@ -170,7 +171,7 @@ const AppProvider = ({ children }) => {
     // dispatch({ type: GET_USER_BEGIN });
     // try {
     //   const { data } = await axios.get(`/api/v1/user/${userID}`);
-    //   // console.log(data);
+    //   console.log(data);
     //   dispatch({
     //     type: GET_USER_SUCCESS,
     //     payload: { userList: data },

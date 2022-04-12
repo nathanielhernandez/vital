@@ -45,11 +45,20 @@ const getOffer = (req, res) => {
 };
 
 const getOffers = async (req, res) => {
-  const offers = await Offer.find({}).sort({ createdAt: "desc" });
-  // if (offers.length === 0) {
-  //   throw new NoItemsError("No offers returned.");
-  // }
-  res.status(StatusCodes.OK).json({ offers, totalOffers: offers.length });
+  let result = Offer.find({}).sort({ createdAt: "desc" });
+
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 5;
+  const skip = (page - 1) * limit;
+
+  result = result.skip(skip).limit(limit);
+
+  const offers = await result;
+
+  const totalOffers = await Offer.countDocuments({});
+  const numOfPages = Math.ceil(totalOffers / limit);
+
+  res.status(StatusCodes.OK).json({ offers, totalOffers, numOfPages });
 };
 
 export { postOffer, getOffer, getOffers };

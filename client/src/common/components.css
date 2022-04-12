@@ -250,6 +250,7 @@ img.profile-medium {
 /* Lists */
 
 ul.sidebar {
+  margin-top: 0.625em;
 }
 
 li.sidebar-item {
@@ -257,6 +258,12 @@ li.sidebar-item {
   align-items: center;
   height: 2.5em;
   list-style: none;
+  padding: 0.5em 1.25em;
+  color: var(--vital-teal);
+}
+
+li.sidebar-item:hover {
+  background-color: var(--btn-focus);
 }
 
 /* Dropdown */

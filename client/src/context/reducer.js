@@ -127,7 +127,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       offers: action.payload.offers,
-      totalJobs: action.payload.totalOffers,
+      totalOffers: action.payload.totalOffers,
     };
   }
 

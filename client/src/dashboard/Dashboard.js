@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../common/Navbar";
-import PersonalDashboard from "./personal/PersonalDashboard";
 import BusinessDashboard from "./business/BusinessDashboard";
+import PersonalDashboard from "./personal/PersonalDashboard";
 import "./Dashboard.css";
 import { useAppContext } from "../context/appContext";
 
@@ -19,9 +19,6 @@ const Dashboard = () => {
       )}
     </React.StrictMode>
   );
-
-  throw new Error("An Unexpected error occured");
-  return;
 };
 
 export default Dashboard;

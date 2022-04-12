@@ -1,61 +1,45 @@
-import React, { useEffect, useState } from "react";
-import Tag from "./Tag";
-import "./Offer.css";
-import { useAppContext } from "../context/appContext";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Offer = (props) => {
-  const [business, setBusiness] = useState({});
-  const {
-    _id,
-    businessID,
-    businessName,
-    offerDetails,
-    shareableLink,
-    tagsID,
-    timeStamp,
-  } = props.offer;
+  const offer = props.offer;
+  const [user, setUser] = useState([]);
 
-  const getBusiness = async (id) => {
+  const getUser = async (id) => {
     try {
       const { data } = await axios.get(`/api/v1/user/${id}`);
-      setBusiness(data);
+      setUser(data);
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
 
-  useEffect(() => {
-    getBusiness(businessID);
-  }, []);
+  // useEffect(() => {
+  //   getUser(offer.businessID);
+  // }, []);
 
   return (
     <div className="card">
       <div className="form-layout-left-aligned">
-        <div className="offer-title-container">
+        <div className="form-layout-horizontal-centered">
           <img
-            src={business.profilePhoto}
+            src={user.profilePhoto}
+            alt={user.businessName}
             className="profile-small"
-            alt={businessName}
           />
-          <div className="offer-title-details">
-            <h5>
-              {businessName} <span className="light">has posted an offer</span>
-            </h5>
-            <p className="small-text">{timeStamp}</p>
+          <div className="form-layout-vertical-left-aligned">
+            <h6>
+              {offer.businessName}
+              <span className="light"> has posted an offer.</span>
+            </h6>
+            <p className="small-text">{offer.createdAt}</p>
           </div>
         </div>
         <p className="bold">Offer Overview</p>
-        <p>{offerDetails}</p>
+        <p className="gray">{offer.offerDetails}</p>
         <p className="bold">Tags</p>
-        <div className="form-layout-horizontal">
-          {/* {tags.map((tag) => {
-            return <Tag tag={tag} />;
-          })} */}
-        </div>
         <p className="bold">Share</p>
-        <div className="form-layout-horizontal">
-          <button className="share-link">{shareableLink}</button>
+        <div className="form-layout-horizontal-right-aligned">
           <button className="btn standard-btn">Respond to Offer</button>
         </div>
       </div>

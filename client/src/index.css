@@ -49,6 +49,14 @@ body {
   align-items: center;
 }
 
+.form-layout-vertical-left-aligned {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.625em;
+}
+
 .form-layout-left-aligned {
   display: flex;
   width: 100%;
