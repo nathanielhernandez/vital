@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 
 const OfferSchema = new mongoose.Schema(
   {
-    businessName: {
-      type: String,
-      required: true,
-    },
     businessID: {
       type: String,
       required: true,
@@ -15,12 +11,6 @@ const OfferSchema = new mongoose.Schema(
       minlength: 200,
       maxlength: 13000,
       required: true,
-    },
-    tagsID: {
-      type: String,
-    },
-    shareableLink: {
-      type: String,
     },
   },
   {

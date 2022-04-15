@@ -23,6 +23,9 @@ import {
   GET_USER_BEGIN,
   GET_USER_SUCCESS,
   GET_USER_ERROR,
+  POST_TAGS_BEGIN,
+  POST_TAGS_SUCCESS,
+  POST_TAGS_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -127,10 +130,32 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const postOffer = async (offer) => {
+  const postTags = async (tags, offerID) => {
+    dispatch({ type: POST_TAGS_BEGIN });
+    tags.map(async (tag) => {
+      try {
+        await axios.post("/api/v1/tag/posttag", {
+          tagValue: tag,
+          offerID: offerID,
+        });
+        dispatch({ type: POST_TAGS_SUCCESS });
+      } catch (error) {
+        dispatch({
+          type: POST_TAGS_ERROR,
+          payload: { msg: error.response.data.msg },
+        });
+      }
+    });
+  };
+
+  const postOffer = async (offer, tags) => {
     dispatch({ type: POST_OFFER_BEGIN });
     try {
-      await axios.post("/api/v1/offer/postoffer", offer);
+      let offerID = "";
+      await axios.post("/api/v1/offer/postoffer", offer).then((response) => {
+        offerID = response.data._id;
+      });
+      postTags(tags, offerID);
       dispatch({ type: POST_OFFER_SUCCESS });
       setTimeout(() => {
         closeModal();

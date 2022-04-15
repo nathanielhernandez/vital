@@ -20,6 +20,9 @@ import {
   GET_USER_BEGIN,
   GET_USER_SUCCESS,
   GET_USER_ERROR,
+  POST_TAGS_BEGIN,
+  POST_TAGS_SUCCESS,
+  POST_TAGS_ERROR,
 } from "./actions";
 import { initialState } from "./appContext";
 
@@ -141,6 +144,30 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === POST_TAGS_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === POST_TAGS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+    };
+  }
+
+  if (action.type === POST_TAGS_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
+    };
+  }
+
   if (action.type === POST_OFFER_BEGIN) {
     return {
       ...state,
@@ -164,7 +191,7 @@ const reducer = (state, action) => {
       isLoading: false,
       showAlert: true,
       alertType: "danger",
-      alertText: "An error has occured",
+      alertText: "An error has occured.",
     };
   }
 

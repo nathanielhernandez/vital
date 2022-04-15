@@ -12,6 +12,7 @@ import connectDB from "./db/connect.js";
 import authRouter from "./routes/authRoutes.js";
 import offerRouter from "./routes/offerRoutes.js";
 import userRouter from "./routes/userRoutes.js";
+import tagRouter from "./routes/tagRoutes.js";
 
 // middleware
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -32,6 +33,7 @@ app.get("/api/v1", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/offer", offerRouter);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/tag", tagRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
