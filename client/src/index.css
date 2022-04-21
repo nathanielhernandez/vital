@@ -35,6 +35,15 @@ body {
   height: calc(100vh - 4em);
 }
 
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625em;
+  position: sticky;
+  height: fit-content;
+  top: 5.25em;
+}
+
 .centered-flexible {
   display: flex;
   height: 100%;

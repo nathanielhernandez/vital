@@ -46,3 +46,11 @@ h6 {
 .gray {
   color: var(--gray);
 }
+
+.centered {
+  text-align: center;
+}
+
+ol, ul {
+  padding-inline-start: 40px;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import useGetOffers from "../hooks/useGetOffers";
 import Offer from "./Offer";
 import PostOffersButton from "./PostOffersButton";
@@ -27,6 +27,8 @@ const OfferContainer = () => {
     },
     [loading, hasMore]
   );
+
+  useEffect(() => {}, [isModalOpen]);
 
   return (
     <div className="form-layout-left-aligned">

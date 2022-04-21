@@ -251,6 +251,7 @@ img.profile-medium {
 
 ul.sidebar {
   margin-top: 0.625em;
+  padding: 0;
 }
 
 li.sidebar-item {

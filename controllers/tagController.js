@@ -20,7 +20,7 @@ const postTag = async (req, res) => {
   });
 };
 
-const getTag = (req, res) => {};
+const getTag = async (req, res) => {};
 
 const getTagsByOfferID = async (req, res) => {
   const { offerID } = req.params;
@@ -28,4 +28,12 @@ const getTagsByOfferID = async (req, res) => {
   res.send(tags);
 };
 
-export { postTag, getTagsByOfferID };
+const getTopTags = async (req, res) => {
+  let result = Tag.find({}).sort({ createdAt: "desc" });
+  result = result.limit(10);
+  const tags = await result;
+
+  res.status(StatusCodes.OK).json({ tags });
+};
+
+export { postTag, getTagsByOfferID, getTopTags };

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useAppContext } from "../context/appContext";
 
 const useGetOffers = (pageNumber) => {
   const [loading, setLoading] = useState(true);

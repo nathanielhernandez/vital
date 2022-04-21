@@ -1,7 +1,16 @@
 import React from "react";
+import OfferContainer from "../OfferContainer";
+import PersonalSidebar from "./PersonalSidebar";
 
 const PersonalDashboard = () => {
-  return <div>Personal</div>;
+  return (
+    <div className="main-container">
+      <div className="dashboard-container">
+        <PersonalSidebar />
+        <OfferContainer />
+      </div>
+    </div>
+  );
 };
 
 export default PersonalDashboard;
