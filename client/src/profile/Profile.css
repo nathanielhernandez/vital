@@ -1,0 +1,52 @@
+@import url(../index.css);
+
+.profile-container {
+    max-width: 1000px;
+  margin: 4em auto 0 auto;
+  height: calc(100vh - 4em);
+}
+
+.profile-wrapper {
+    padding: 1.25em 0;
+}
+
+.profile-header {
+    box-shadow: var(--card-box-shadow);
+}
+
+.profile-cover-photo {
+    height: 12.5em;
+    width: 100%;
+    background-color: var(--vital-teal);
+    border-radius: 0.625em 0.625em 0 0;
+}
+
+.profile-header-info {
+    height: auto;
+    width: 100%;
+    padding: 7.5em 1.25em 1.25em 1.25em;
+    background-color: var(--white);
+    border-radius: 0 0 0.625em 0.625em;
+}
+
+.profile-photo {
+    border: 0.5em var(--white) solid;
+    border-radius: 50%;
+    position: relative;
+    bottom: -6.25em;
+    margin-left: 1.25em;
+}
+
+.profile-options {
+    position: relative;
+    float: right;
+    top: 13.125em;
+    right: 0.625em;
+}
+
+.profile-navigation {
+    width: 100%;
+    padding: 0 1.25em;
+    border-radius: var(--border-radius-10);
+    background-color: var(--white);
+}

@@ -247,6 +247,11 @@ img.profile-medium {
   border-radius: 50%;
 }
 
+img.profile-large {
+  height: 12.5em;
+  border-radius: 50%;
+}
+
 /* Lists */
 
 ul.sidebar {
@@ -265,6 +270,33 @@ li.sidebar-item {
 
 li.sidebar-item:hover {
   background-color: var(--btn-focus);
+}
+
+ul.profile-nav {
+  margin: 0;
+  padding: 0;
+  height: 2.875em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+li.profile-nav-item {
+  display: inline;
+  /* height: 2.875em; */
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0 1.25em 0 0;
+  color: var(--gray);
+}
+
+li.profile-nav-item:hover {
+  color: var(--vital-teal);
+  cursor: pointer;
+}
+
+li.profile-nav-item-active {
+  color: var(--vital-teal);
 }
 
 /* Dropdown */

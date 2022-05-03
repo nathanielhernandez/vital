@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 import axios from "axios";
 import Tag from "./Tag";
@@ -6,12 +7,18 @@ import { useAppContext } from "../context/appContext";
 
 import "./Tags.css";
 import BusinessOfferButtons from "./business/BusinessOfferButtons";
+import ModalWrapper from "../components/modal/ModalWrapper";
 
 const Offer = (props) => {
   const offer = props.offer;
   const [postUser, setUser] = useState([]);
   const [tags, setTags] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAppContext();
+
+  const handleResponse = (e) => {
+    setIsModalOpen(true);
+  };
 
   const getUser = async (id) => {
     try {
@@ -36,6 +43,7 @@ const Offer = (props) => {
 
   return (
     <div className="card">
+      {isModalOpen && <ModalWrapper />}
       <div className="form-layout-left-aligned">
         <div className="form-layout-horizontal-centered">
           <img
@@ -45,7 +53,7 @@ const Offer = (props) => {
           />
           <div className="form-layout-vertical-left-aligned">
             <h6>
-              {postUser.businessName}
+              <Link to={`/user/${postUser._id}`}>{postUser.businessName}</Link>
               <span className="light"> has posted an offer.</span>
             </h6>
             <p className="small-text">{offer.createdAt}</p>
@@ -64,7 +72,9 @@ const Offer = (props) => {
           {user.accountType === "Business" ? (
             <BusinessOfferButtons offer={offer} />
           ) : (
-            <button className="btn standard-btn">Respond to Offer</button>
+            <button className="btn standard-btn" onClick={handleResponse}>
+              Respond to Offer
+            </button>
           )}
         </div>
       </div>
