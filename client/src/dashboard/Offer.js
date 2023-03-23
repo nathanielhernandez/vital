@@ -8,6 +8,7 @@ import { useAppContext } from "../context/appContext";
 import "./Tags.css";
 import BusinessOfferButtons from "./business/BusinessOfferButtons";
 import ModalWrapper from "../components/modal/ModalWrapper";
+import RespondOffer from "./RespondOffer";
 
 const Offer = (props) => {
   const offer = props.offer;
@@ -39,11 +40,13 @@ const Offer = (props) => {
   useEffect(() => {
     getUser(offer.businessID);
     getTags(offer._id);
-  }, []);
+  });
 
   return (
     <div className="card">
-      {isModalOpen && <ModalWrapper />}
+      {isModalOpen && (
+        <ModalWrapper component={<RespondOffer offer={offer} />} />
+      )}
       <div className="form-layout-left-aligned">
         <div className="form-layout-horizontal-centered">
           <img

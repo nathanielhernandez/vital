@@ -83,6 +83,17 @@ input:active {
   text-transform: capitalize;
 }
 
+.btn-secondary {
+  height: fit-content;
+  width: fit-content;
+  background-color: transparent;
+  color: var(--vital-teal);
+  border: 1px solid var(--vital-teal);
+  border-radius: var(--border-radius-10);
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
 .large-btn {
   font-size: 1.5em;
   font-weight: 700;

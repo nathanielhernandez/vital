@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import { useAppContext } from "../../context/appContext";
 import "../Profile.css";
+import ProfileNav from "../ProfileNav";
 
 const BusinessProfile = (props) => {
-  const [nav, setNav] = useState("Feed");
+  const { user } = useAppContext();
   const userProfile = props.userProfile;
   return (
     <div className="profile-container">
@@ -14,21 +16,20 @@ const BusinessProfile = (props) => {
               alt={userProfile.businessName}
               className="profile-photo profile-large"
             />
-            <div className="profile-options">
-              <button className="btn standard-btn">Edit Profile</button>
-            </div>
+            {user._id === userProfile._id && (
+              <div className="profile-options">
+                <button className="btn-secondary standard-btn">
+                  Edit Profile
+                </button>
+              </div>
+            )}
           </div>
           <div className="profile-header-info">
             <h2>{userProfile.businessName}</h2>
           </div>
         </div>
       </div>
-      <div className="card profile-navigation">
-        <ul className="profile-nav">
-          <li className="profile-nav-item">Feed</li>
-          <li className="profile-nav-item">About</li>
-        </ul>
-      </div>
+      <ProfileNav userProfile={userProfile} />
     </div>
   );
 };

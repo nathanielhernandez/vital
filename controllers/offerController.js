@@ -21,9 +21,9 @@ const postOffer = async (req, res) => {
   });
 };
 
-const getOffer = (req, res) => {
-  const { offerID } = res.body;
-  res.send(offerID);
+const getOffer = async (req, res) => {
+  const offer = await Offer.findById(req.params.id);
+  res.send(offer);
 };
 
 const getOffers = async (req, res) => {
@@ -43,4 +43,9 @@ const getOffers = async (req, res) => {
   res.status(StatusCodes.OK).json({ offers, totalOffers, numOfPages });
 };
 
-export { postOffer, getOffer, getOffers };
+const getOffersByUserID = async (req, res) => {
+  const user = req.query.user;
+  let result = Offer.find({ businessID: user }).sort({ createdAt: "desc" });
+};
+
+export { postOffer, getOffer, getOffers, getOffersByUserID };

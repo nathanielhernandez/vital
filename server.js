@@ -13,6 +13,7 @@ import authRouter from "./routes/authRoutes.js";
 import offerRouter from "./routes/offerRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import tagRouter from "./routes/tagRoutes.js";
+import responseRouter from "./routes/responseRoutes.js";
 
 // middleware
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -34,6 +35,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/offer", offerRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/tag", tagRouter);
+app.use("/api/v1/response", responseRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

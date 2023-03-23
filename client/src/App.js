@@ -3,6 +3,7 @@ import SignUp from "./signup/SignUp.js";
 import SignIn from "./signin/SignIn.js";
 import Dashboard from "./dashboard/Dashboard";
 import Home from "./home/Home";
+import OfferResponses from "./response/business/OfferResponses";
 import { useAppContext } from "./context/appContext";
 
 import { Routes, Route } from "react-router-dom";
@@ -18,6 +19,10 @@ function App() {
         <Route path="/" element={<Home />} />
       )}
       <Route path="/user/:id" element={<Profile />} />
+      <Route
+        path="/offer/:id/responses"
+        element={<OfferResponses offer={":id"} />}
+      />
       <Route path="/login" element={<SignIn />} />
       <Route path="/register" element={<SignUp />} />
     </Routes>
