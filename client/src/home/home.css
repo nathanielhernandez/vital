@@ -1,0 +1,24 @@
+.home-main {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../resources/img/mainbg.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+.header-home {
+    height: 72px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+.home-container {
+    width: 100%;
+    height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5em;
+}

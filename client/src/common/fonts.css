@@ -36,11 +36,23 @@ h6 {
 }
 
 .light {
-  font-weight: 400;
+  font-weight: 300;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.semibold {
+  font-weight: 600;
 }
 
 .bold {
   font-weight: 700;
+}
+
+.extrabold {
+  font-weight: 800;
 }
 
 .gray {
@@ -53,4 +65,12 @@ h6 {
 
 ol, ul {
   padding-inline-start: 40px;
+}
+
+.logo-white {
+  color: white;
+}
+
+.white {
+  color: white;
 }

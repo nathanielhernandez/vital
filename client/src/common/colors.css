@@ -1,7 +1,9 @@
 :root {
   --vital-teal: #2cb1bc;
+  --vital-orange: #dc8b43;
   --background-light: #f0f4f8;
   --border-light: rgba(178, 192, 200, 0.5);
+  --border-card: #DCE9EA;
   --notification-red: #ff5555;
   --input-white: #ffffff;
   --light-gray: #999;

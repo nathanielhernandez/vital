@@ -59,8 +59,8 @@ input:active {
   height: fit-content;
   background-color: var(--white);
   border-radius: var(--border-radius-10);
+  border: 1px solid var(--border-card);
   padding: 1.25em;
-  box-shadow: var(--card-box-shadow);
   transition: all 1s ease-in-out;
 }
 
@@ -77,34 +77,34 @@ input:active {
   background-color: var(--vital-teal);
   color: var(--white);
   border: none;
-  border-radius: var(--border-radius-10);
   white-space: nowrap;
   transition: all var(--transition);
-  text-transform: capitalize;
 }
 
 .btn-secondary {
   height: fit-content;
   width: fit-content;
-  background-color: transparent;
-  color: var(--vital-teal);
-  border: 1px solid var(--vital-teal);
-  border-radius: var(--border-radius-10);
+  background-color: var(--vital-orange);
+  color: var(--white);
+  border: none;
   white-space: nowrap;
-  text-transform: capitalize;
+  transition: all var(--transition);
 }
 
 .large-btn {
-  font-size: 1.5em;
+  height: 38px;
+  font-size: 1em;
   font-weight: 700;
-  padding: 0.3961em 2em;
+  padding: 0 1.5em;
+  border-radius: 19px;
 }
 
 .standard-btn {
-  height: 48px;
+  height: 42px;
   font-size: 1em;
   font-weight: 700;
-  padding: 0.3961em 1.25em;
+  padding: 0 1.5em;
+  border-radius: 21px;
 }
 
 .btn:hover {
