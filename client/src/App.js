@@ -8,6 +8,7 @@ import { useAppContext } from "./context/appContext";
 
 import { Routes, Route } from "react-router-dom";
 import Profile from "./profile/Profile";
+import OfferOverview from "./offer/OfferOverview";
 
 function App() {
   const { user } = useAppContext();
@@ -19,10 +20,8 @@ function App() {
         <Route path="/" element={<Home />} />
       )}
       <Route path="/user/:id" element={<Profile />} />
-      <Route
-        path="/offer/:id/responses"
-        element={<OfferResponses offer={":id"} />}
-      />
+      <Route path="/offer/:id" element={<OfferOverview />} />
+      <Route path="/offer/:id/responses" element={<OfferResponses />} />
       <Route path="/login" element={<SignIn />} />
       <Route path="/register" element={<SignUp />} />
     </Routes>

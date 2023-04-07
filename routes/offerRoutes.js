@@ -9,8 +9,8 @@ import {
 } from "../controllers/offerController.js";
 
 router.route("/postoffer").post(postOffer);
-router.route("/getoffer").get(getOffer);
 router.route("/getoffers").get(getOffers);
+router.route("/:id").get(getOffer);
 router.route("/getoffersbyuser").get(getOffersByUserID);
 
 export default router;

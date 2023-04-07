@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
 import useGetOffers from "../hooks/useGetOffers";
 import Offer from "./Offer";
 import PostOffersButton from "./PostOffersButton";
@@ -42,7 +43,9 @@ const OfferContainer = () => {
           if (offers.length === index + 1) {
             return (
               <div ref={lastOffer} key={offer._id}>
-                <Offer offer={offer} />
+                <Link to={`/offer/${offer._id}`}>
+                  <Offer offer={offer} />
+                </Link>
               </div>
             );
           } else {

@@ -40,7 +40,7 @@ const Offer = (props) => {
   useEffect(() => {
     getUser(offer.businessID);
     getTags(offer._id);
-  });
+  }, []);
 
   return (
     <div className="card">
@@ -62,16 +62,15 @@ const Offer = (props) => {
             <p className="small-text">{offer.createdAt}</p>
           </div>
         </div>
-        <p className="bold">Offer Overview</p>
+
         <span className="gray">{parse(offer.offerDetails)}</span>
-        <p className="bold">Tags</p>
+
         <div className="tags-container">
           {tags.map((tag) => {
             return <Tag tag={tag.tagValue} key={tag._id} />;
           })}
         </div>
-        <p className="bold">Share</p>
-        <div className="form-layout-horizontal-right-aligned">
+        {/* <div className="form-layout-horizontal-right-aligned">
           {user.accountType === "Business" ? (
             <BusinessOfferButtons offer={offer} />
           ) : (
@@ -79,7 +78,7 @@ const Offer = (props) => {
               Respond to Offer
             </button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

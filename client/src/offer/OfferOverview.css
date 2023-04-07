@@ -1,0 +1,18 @@
+@import url(../index.css);
+
+.offer-overview-container {
+    width: 100%;
+    padding: 1.25em;
+    margin: 1.25em 0;
+    display: inline-grid;
+    grid-template-columns: 1fr 200px;
+    gap: 1.25em;
+}
+
+.offer-buttons {
+    padding: 1.5em 0;
+}
+
+.offer-details {
+    border-right: solid 1px #eee;
+}

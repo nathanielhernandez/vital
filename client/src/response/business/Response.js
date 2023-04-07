@@ -18,7 +18,7 @@ const Response = (props) => {
 
   useEffect(() => {
     getUser(response.userID);
-  }, [response]);
+  }, []);
 
   return (
     <div className="card">

@@ -34,7 +34,7 @@ const OfferResponses = (props) => {
   };
 
   useEffect(() => {
-    // getOffer(id);
+    getOffer(id);
     getResponses(id);
   }, []);
 
@@ -43,7 +43,7 @@ const OfferResponses = (props) => {
       <Navbar user={user} isLoggedIn={true} />
       <div className="main-container">
         <div className="dashboard-container">
-          <div></div>
+          <div>{offer.offerDetails}</div>
           {responses.map((response, index) => {
             return (
               <div key={index}>
