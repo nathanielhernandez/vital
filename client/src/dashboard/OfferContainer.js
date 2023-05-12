@@ -32,10 +32,13 @@ const OfferContainer = () => {
   useEffect(() => {}, [isModalOpen]);
 
   return (
-    <div className="form-layout-left-aligned">
+    <div className="form-layout-left-aligned no-gap">
       {isModalOpen && <ModalWrapper component={<PostOffer />} />}
       {user.accountType === "Business" && <PostOffersButton />}
 
+      <div className="card-top">
+        <h5 className="medium">Offers for you</h5>
+      </div>
       {offers.length < 1 && !loading ? (
         <NoOffers />
       ) : (
@@ -55,6 +58,7 @@ const OfferContainer = () => {
       )}
       <div>{loading && <SpinningLoader />}</div>
       <div>{error && `Error`}</div>
+      <div className="card-bottom"></div>
     </div>
   );
 };

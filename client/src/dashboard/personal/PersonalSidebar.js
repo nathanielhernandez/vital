@@ -1,6 +1,8 @@
 import React from "react";
 import { useAppContext } from "../../context/appContext";
 import "./PersonalSidebar.css";
+import "../../common/fonts.css";
+import { MdDashboard } from "react-icons/md";
 
 const PersonalSidebar = () => {
   const { user } = useAppContext();
@@ -15,16 +17,20 @@ const PersonalSidebar = () => {
               className="profile-medium"
             />
             <div className="centered-flexible">
-              <h6 className="centered">
-                {user.firstName + " " + user.lastName}
-              </h6>
+              <h6 className="centered">{"Hello " + user.firstName + ". 👋"}</h6>
             </div>
           </div>
         </div>
         <div className="personal-sidebar-list">
           <ul className="sidebar">
-            <li className="sidebar-item">Dashboard</li>
+            <li className="sidebar-item extrabold">
+              <MdDashboard /> Dashboard
+            </li>
+            <li className="sidebar-item">Contracts</li>
           </ul>
+        </div>
+        <div className="personal-sidebar-tags">
+          <p className="small-text extra-bold">Trending</p>
         </div>
       </div>
     </div>

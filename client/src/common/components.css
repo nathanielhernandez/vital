@@ -64,6 +64,40 @@ input:active {
   transition: all 1s ease-in-out;
 }
 
+.card-top {
+  height: fit-content;
+  background-color: var(--white);
+  border-radius: var(--border-radius-10) var(--border-radius-10) 0 0;
+  border: 1px solid var(--border-card);
+  border-bottom: 0;
+  padding: 1.25em;
+}
+
+.card-middle {
+  height: fit-content;
+  background-color: var(--white);
+  border: 1px solid var(--border-card);
+  border-bottom: 0;
+  padding: 1.25em;
+}
+
+.card-bottom {
+  height: fit-content;
+  background-color: var(--white);
+  border-radius: 0 0 var(--border-radius-10) var(--border-radius-10);
+  border: 1px solid var(--border-card);
+  padding: 1.25em;
+}
+
+.card-actionable {
+  background-color: var(--white);
+}
+
+.card-actionable:hover {
+  background-color: var(--hover-light);
+  transition: all var(--transition);
+}
+
 .fixed {
   position: sticky;
   top: 0;
@@ -218,17 +252,22 @@ a:hover {
   text-decoration: none;
 }
 
+a:visited {
+  color: black;
+}
+
 a.standard {
   color: var(--vital-teal);
 }
 
 a.tag {
+  height: 24px;
   background-color: var(--tag-background);
   color: var(--dark-gray);
   font-size: 0.75em;
   font-weight: 700;
   padding: 0.5em 1.5em;
-  border-radius: var(--border-radius-4);
+  border-radius: 12px;
   transition: all 0.1s;
 }
 
@@ -249,7 +288,7 @@ a > img.profile-tiny:hover {
 }
 
 img.profile-small {
-  height: 3em;
+  height: 2em;
   border-radius: 50%;
 }
 
@@ -266,7 +305,7 @@ img.profile-large {
 /* Lists */
 
 ul.sidebar {
-  margin-top: 0.625em;
+  margin: 0.625em 0;
   padding: 0;
 }
 
@@ -276,11 +315,12 @@ li.sidebar-item {
   height: 2.5em;
   list-style: none;
   padding: 0.5em 1.25em;
-  color: var(--vital-teal);
+  color: var(--dark-gray);
+  font-weight: 600;
 }
 
 li.sidebar-item:hover {
-  background-color: var(--btn-focus);
+  background-color: var(--hover-light);
 }
 
 ul.profile-nav {

@@ -67,6 +67,10 @@ body {
   gap: 0.625em;
 }
 
+.no-space {
+  gap: 0;
+}
+
 .form-layout-left-aligned {
   display: flex;
   width: 100%;
@@ -93,4 +97,8 @@ body {
   width: 100%;
   gap: 0.625em;
   justify-content: flex-end;
+}
+
+.no-gap {
+  gap: 0;
 }

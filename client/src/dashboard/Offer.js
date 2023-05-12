@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 import axios from "axios";
 import Tag from "./Tag";
+import Timestamp from "../common/Timestamp";
 import { useAppContext } from "../context/appContext";
+import { FiGift } from "react-icons/fi";
 
 import "./Tags.css";
 import BusinessOfferButtons from "./business/BusinessOfferButtons";
@@ -43,7 +45,7 @@ const Offer = (props) => {
   }, []);
 
   return (
-    <div className="card">
+    <div className="card-middle card-actionable">
       {isModalOpen && (
         <ModalWrapper component={<RespondOffer offer={offer} />} />
       )}
@@ -54,13 +56,23 @@ const Offer = (props) => {
             alt={postUser.businessName}
             className="profile-small"
           />
-          <div className="form-layout-vertical-left-aligned">
-            <h6>
-              <Link to={`/user/${postUser._id}`}>{postUser.businessName}</Link>
-              <span className="light"> has posted an offer.</span>
-            </h6>
-            <p className="small-text">{offer.createdAt}</p>
+          <h6 className="bold">
+            <Link to={{ pathname: `/user/${postUser._id}`, state: { offer } }}>
+              {postUser.businessName}
+            </Link>
+          </h6>
+        </div>
+        <div className="form-layout-vertical-left-aligned no-space">
+          <h5 className="semibold">{offer.offerTitle}</h5>
+          <div className="form-layout-horizontal-centered">
+            <Timestamp timestamp={offer.createdAt} />
+            <p className="small-text bold">Boise, ID</p>
           </div>
+        </div>
+
+        <div className="form-layout-horizontal-centered">
+          <FiGift />
+          <p className="semibold">Two Alefort Drink Tokens</p>
         </div>
 
         <span className="gray">{parse(offer.offerDetails)}</span>

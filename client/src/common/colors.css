@@ -1,6 +1,8 @@
 :root {
-  --vital-teal: #2cb1bc;
+  /* --vital-teal: #2cb1bc; */
+  --vital-teal: #008080;
   --vital-orange: #dc8b43;
+  --hover-light: #EEF6F6;
   --background-light: #f0f4f8;
   --border-light: rgba(178, 192, 200, 0.5);
   --border-card: #DCE9EA;
@@ -13,7 +15,7 @@
   --active-green: #2cbc88;
   --vital-teal-dark: #2f98a0;
   --shadow-light: rgba(178, 192, 200, 0.2);
-  --tag-background: #e0e5eb;
-  --tag-background-hover: #c9d0d9;
+  --tag-background: #D2E8E9;
+  --tag-background-hover: #B5CACB;
   --btn-focus: rgba(44, 177, 188, 0.4);
 }

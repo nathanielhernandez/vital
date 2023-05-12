@@ -1,5 +1,4 @@
 .personal-profile-container {
-    box-shadow: var(--card-box-shadow);
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -8,14 +7,24 @@
 .personal-sidebar-card {
     height: fit-content;
     background-color: var(--white);
+    border: 1px solid var(--border-card);
     border-radius: 0.625em 0.625em 0 0;
-    padding: 1.25em 1.25em 0 1.25em;
+    padding: 1.25em 1.25em 1.25em 1.25em;
     transition: all 1s ease-in-out;
 }
 
 .personal-sidebar-list {
-    padding: 0 0 1.25em 0;
+    height: fit-content;
+    background-color: var(--white);
+    border: 1px solid var(--border-card);
+    border-top: 0;
+}
+
+.personal-sidebar-tags {
     height: fit-content;
     background-color: var(--white);
     border-radius: 0 0 0.625em 0.625em;
+    border: 1px solid var(--border-card);
+    border-top: 0;
+    padding: 1.25em;
 }

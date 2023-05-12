@@ -3,21 +3,34 @@ import { StatusCodes } from "http-status-codes";
 import { BadRequestError, NoItemsError } from "../errors/index.js";
 
 const postOffer = async (req, res) => {
-  const { businessID, offerDetails } = req.body;
+  const { businessID, offerTitle, reward, offerDetails, allowedContracts } =
+    req.body;
 
-  if (!businessID || !offerDetails) {
+  if (
+    !businessID ||
+    !offerTitle ||
+    !reward ||
+    !offerDetails ||
+    !allowedContracts
+  ) {
     throw new BadRequestError("Please provide all values");
   }
 
   const offer = await Offer.create({
     businessID,
+    offerTitle,
+    reward,
     offerDetails,
+    allowedContracts,
   });
 
   res.status(StatusCodes.CREATED).json({
     _id: offer._id,
     businessID: offer.businessID,
+    offerTitle: offer.offerTitle,
+    reward: offer.reward,
     offerDetails: offer.offerDetails,
+    allowedContracts: offer.allowedContracts,
   });
 };
 

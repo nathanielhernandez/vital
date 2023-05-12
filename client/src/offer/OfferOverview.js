@@ -17,7 +17,7 @@ const OfferOverview = () => {
   const [offer, setOffer] = useState([]);
   const [business, setBusiness] = useState([]);
 
-  const getOffer = async (id) => {
+  const fetchOffer = async (id) => {
     try {
       const { data } = await axios.get(`/api/v1/offer/${id}`);
       setOffer(data);
@@ -26,9 +26,24 @@ const OfferOverview = () => {
     }
   };
 
+  const fetchBusiness = async (id) => {
+    if (offer) {
+      try {
+        const { data } = await axios.get(`/api/v1/user/${offer.businessID}`);
+        setBusiness(data);
+      } catch (error) {
+        throw new Error(error);
+      }
+    }
+  };
+
   useEffect(() => {
-    getOffer(id);
+    fetchOffer(id);
   }, []);
+
+  useEffect(() => {
+    fetchBusiness();
+  }, [offer]);
 
   return (
     <React.StrictMode>

@@ -88,7 +88,7 @@ const Navbar = (props) => {
   if (isLoggedIn) {
     return (
       <nav>
-        <h4>Vital</h4>
+        <h4 className="logo">Vital</h4>
         <input
           type="text"
           className="input large-input"
@@ -107,7 +107,7 @@ const Navbar = (props) => {
 
   return (
     <nav className="home-screen">
-      <h4>Vital</h4>
+      <h4 className="logo">Vital</h4>
     </nav>
   );
 };
