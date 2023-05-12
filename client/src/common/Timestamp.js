@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-const Timestamp = ({ timestamp }) => {
+const Timestamp = ({ timestamp, includePosted }) => {
   const getTimeAgo = (timestamp) => {
     const now = moment();
     const createdDate = moment(timestamp);
@@ -26,11 +26,19 @@ const Timestamp = ({ timestamp }) => {
     }
   };
 
-  return (
-    <div>
-      <p className="small-text bold">{getTimeAgo(timestamp)}</p>
-    </div>
-  );
+  if (includePosted) {
+    return (
+      <div>
+        <p className="small-text bold">{`Posted ` + getTimeAgo(timestamp)}</p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p className="small-text bold">{getTimeAgo(timestamp)}</p>
+      </div>
+    );
+  }
 };
 
 export default Timestamp;

@@ -54,16 +54,30 @@ const OfferOverview = () => {
           <div className="form-layout-vertical-left-aligned">
             {user.accountType === "Personal" && (
               <div className="form-layout-centered offer-buttons">
-                <button className="btn standard-btn">Respond to Offer</button>
+                <button className="btn standard-btn btn-full-width">
+                  Respond to Offer
+                </button>
+                <button className="btn-tertiary standard-btn btn-full-width">
+                  Save Offer
+                </button>
               </div>
             )}
-            <h6>
-              About{" "}
-              <Link to={`/user/${business._id}`}>{business.businessName}</Link>
-            </h6>
+            <div className="form-layout-centered">
+              <img
+                src={business.profilePhoto}
+                alt={business.businessName}
+                className="profile-medium"
+              />
+              <h6>
+                <Link to={`/user/${business._id}`}>
+                  {business.businessName}
+                </Link>
+              </h6>
+            </div>
             <p className="bold">Location</p>
             Boise, ID
-            <a href="http://www.treefortmusicfest.com">Website</a>
+            <p className="bold">Website</p>
+            <a href="http://www.treefortmusicfest.com">Link</a>
           </div>
         </div>
       </div>

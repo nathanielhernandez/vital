@@ -77,6 +77,8 @@ const Offer = (props) => {
 
         <span className="gray">{parse(offer.offerDetails)}</span>
 
+        {offer.allowedContracts}
+
         <div className="tags-container">
           {tags.map((tag) => {
             return <Tag tag={tag.tagValue} key={tag._id} />;

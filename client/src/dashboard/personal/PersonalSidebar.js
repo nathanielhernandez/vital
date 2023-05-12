@@ -23,10 +23,9 @@ const PersonalSidebar = () => {
         </div>
         <div className="personal-sidebar-list">
           <ul className="sidebar">
-            <li className="sidebar-item extrabold">
-              <MdDashboard /> Dashboard
-            </li>
+            <li className="sidebar-item extrabold">Dashboard</li>
             <li className="sidebar-item">Contracts</li>
+            <li className="sidebar-item">Saved</li>
           </ul>
         </div>
         <div className="personal-sidebar-tags">

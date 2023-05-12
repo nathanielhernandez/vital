@@ -6,15 +6,15 @@ const postOffer = async (req, res) => {
   const { businessID, offerTitle, reward, offerDetails, allowedContracts } =
     req.body;
 
-  if (
-    !businessID ||
-    !offerTitle ||
-    !reward ||
-    !offerDetails ||
-    !allowedContracts
-  ) {
-    throw new BadRequestError("Please provide all values");
-  }
+  // if (
+  //   !businessID ||
+  //   !offerTitle ||
+  //   !reward ||
+  //   !offerDetails ||
+  //   !allowedContracts
+  // ) {
+  //   throw new BadRequestError("Please provide all values");
+  // }
 
   const offer = await Offer.create({
     businessID,

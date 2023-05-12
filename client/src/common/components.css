@@ -125,6 +125,20 @@ input:active {
   transition: all var(--transition);
 }
 
+.btn-tertiary {
+  height: fit-content;
+  width: fit-content;
+  background-color: var(--white);
+  color: var(--vital-teal);
+  border: .125em solid var(--vital-teal);
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+
+.btn-full-width {
+  width: 100%;
+}
+
 .large-btn {
   height: 38px;
   font-size: 1em;

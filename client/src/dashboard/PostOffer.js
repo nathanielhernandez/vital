@@ -9,7 +9,10 @@ import "./PostOffer.css";
 
 const offerInitialState = {
   businessID: "",
+  offerTitle: "",
+  reward: "",
   offerDetails: "",
+  allowedContracts: "",
 };
 
 const tagsInitialState = {
@@ -55,6 +58,8 @@ const PostOffer = () => {
           <h6>{user.businessName}</h6>
         </div>
         <AddTags tags={tags} setTags={setTags} />
+        <p className="bold">Offer Title</p>
+        <input className="input large-input"></input>
         <p className="bold">Offer Overview</p>
         <OfferRichText setOffer={setOffer} offer={offer} />
         <div className="form-layout-horizontal-right-aligned">
