@@ -25,7 +25,7 @@ import {
   GET_USER_ERROR,
   POST_TAGS_BEGIN,
   POST_TAGS_SUCCESS,
-  POST_TAGS_ERROR
+  POST_TAGS_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -43,7 +43,7 @@ const initialState = {
   offers: [],
   totalOffers: null,
   offersPageNumber: 1,
-  isModalOpen: false
+  isModalOpen: false,
 };
 
 const AppContext = React.createContext();
@@ -59,7 +59,7 @@ const AppProvider = ({ children }) => {
   const clearAlert = () => {
     setTimeout(() => {
       dispatch({
-        type: CLEAR_ALERT
+        type: CLEAR_ALERT,
       });
     }, 3000);
   };
@@ -76,6 +76,8 @@ const AppProvider = ({ children }) => {
     localStorage.removeItem("location");
   };
 
+  const postResponse = asyync();
+
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
@@ -83,14 +85,14 @@ const AppProvider = ({ children }) => {
       const { user, token, location } = response.data;
       dispatch({
         type: REGISTER_USER_SUCCESS,
-        payload: { user, token, location }
+        payload: { user, token, location },
       });
 
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
       dispatch({
         type: REGISTER_USER_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -104,7 +106,7 @@ const AppProvider = ({ children }) => {
       const { user, token } = response.data;
       dispatch({
         type: LOGIN_USER_SUCCESS,
-        payload: { user, token }
+        payload: { user, token },
       });
 
       addUserToLocalStorage({ user, token });
@@ -112,7 +114,7 @@ const AppProvider = ({ children }) => {
       // console.log(error.response);
       dispatch({
         type: LOGIN_USER_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -134,13 +136,13 @@ const AppProvider = ({ children }) => {
       try {
         await axios.post("/api/v1/tag/posttag", {
           tagValue: tag,
-          offerID: offerID
+          offerID: offerID,
         });
         dispatch({ type: POST_TAGS_SUCCESS });
       } catch (error) {
         dispatch({
           type: POST_TAGS_ERROR,
-          payload: { msg: error.response.data.msg }
+          payload: { msg: error.response.data.msg },
         });
       }
     });
@@ -161,7 +163,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: POST_OFFER_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -176,13 +178,13 @@ const AppProvider = ({ children }) => {
         type: GET_OFFERS_SUCCESS,
         payload: {
           offers,
-          totalOffers
-        }
+          totalOffers,
+        },
       });
     } catch (error) {
       dispatch({
         type: GET_OFFERS_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
   };
@@ -223,7 +225,7 @@ const AppProvider = ({ children }) => {
         postOffer,
         getUser,
         openModal,
-        closeModal
+        closeModal,
       }}
     >
       {children}

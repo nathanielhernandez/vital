@@ -37,6 +37,15 @@ const OfferOverview = () => {
     }
   };
 
+  const postResponse = async();
+
+  const handleResponse = (e) => {
+    e.preventDefault();
+    if (offer.allowedContracts > 0) {
+      console.log(true);
+    }
+  };
+
   useEffect(() => {
     fetchOffer(id);
   }, []);
@@ -54,7 +63,10 @@ const OfferOverview = () => {
           <div className="form-layout-vertical-left-aligned">
             {user.accountType === "Personal" && (
               <div className="form-layout-centered offer-buttons">
-                <button className="btn standard-btn btn-full-width">
+                <button
+                  className="btn standard-btn btn-full-width"
+                  onClick={handleResponse}
+                >
                   Respond to Offer
                 </button>
                 <button className="btn-tertiary standard-btn btn-full-width">
