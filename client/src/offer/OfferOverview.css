@@ -15,5 +15,5 @@
 
 .offer-details {
     padding-right: 1.25em;
-    border-right: solid 1px #eee;
+    border-right: solid 1px var(--card-border-dark);
 }

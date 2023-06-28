@@ -4,7 +4,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--dark-gray);
+  color: var(--font-color-dark);
 }
 
 h1 {
@@ -64,7 +64,15 @@ p {
 }
 
 .gray {
-  color: var(--gray);
+  color: var(--gray) !important;
+}
+
+.light-gray {
+  color: var(--light-gray-dark) !important;
+}
+
+.vital-orange {
+  color: var(--vital-orange);
 }
 
 .centered {

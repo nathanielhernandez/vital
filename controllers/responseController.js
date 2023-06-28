@@ -3,9 +3,9 @@ import { StatusCodes } from "http-status-codes";
 import { BadRequestError } from "../errors/index.js";
 
 const postResponse = async (req, res) => {
-  const { offerID, responseDetails, userID } = req.body;
+  const { offerID, responseDetails, userID, businessID } = req.body;
 
-  if (!offerID || !responseDetails || !userID) {
+  if (!offerID || !responseDetails || !userID || !businessID) {
     throw new BadRequestError("Please provide all values");
   }
 
@@ -13,6 +13,7 @@ const postResponse = async (req, res) => {
     offerID,
     responseDetails,
     userID,
+    businessID,
   });
 
   res.status(StatusCodes.CREATED).json({
@@ -20,6 +21,7 @@ const postResponse = async (req, res) => {
     offerID: response.offerID,
     responseDetails: response.responseDetails,
     userID: response.userID,
+    businessID: response.businessID,
   });
 };
 

@@ -45,7 +45,7 @@ const Offer = (props) => {
   }, []);
 
   return (
-    <div className="card-middle card-actionable">
+    <div className="none">
       {isModalOpen && (
         <ModalWrapper component={<RespondOffer offer={offer} />} />
       )}
@@ -71,13 +71,11 @@ const Offer = (props) => {
         </div>
 
         <div className="form-layout-horizontal-centered">
-          <FiGift />
+          <FiGift className="vital-orange" />
           <p className="semibold">Two Alefort Drink Tokens</p>
         </div>
 
-        <span className="gray">{parse(offer.offerDetails)}</span>
-
-        {offer.allowedContracts}
+        <div className="light-gray">{parse(offer.offerDetails)}</div>
 
         <div className="tags-container">
           {tags.map((tag) => {

@@ -45,7 +45,11 @@ const OfferContainer = () => {
         offers.map((offer, index) => {
           if (offers.length === index + 1) {
             return (
-              <div ref={lastOffer} key={offer._id}>
+              <div
+                ref={lastOffer}
+                key={offer._id}
+                className="card-middle card-actionable"
+              >
                 <Link to={`/offer/${offer._id}`}>
                   <Offer offer={offer} />
                 </Link>

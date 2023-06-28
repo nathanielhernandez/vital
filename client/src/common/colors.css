@@ -1,8 +1,12 @@
 :root {
-  /* --vital-teal: #2cb1bc; */
-  --vital-teal: #008080;
-  --vital-orange: #dc8b43;
-  --hover-light: #EEF6F6;
+
+  /* global colors */
+  --vital-teal: #5BC9E3;
+  --vital-orange: #F7991C;
+
+
+
+
   --background-light: #f0f4f8;
   --border-light: rgba(178, 192, 200, 0.5);
   --border-card: #DCE9EA;
@@ -18,4 +22,19 @@
   --tag-background: #D2E8E9;
   --tag-background-hover: #B5CACB;
   --btn-focus: rgba(44, 177, 188, 0.4);
+
+  /*light colors */
+  
+  --background-color-light: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(230, 244, 241, 1));
+  --hover-light: #EEF6F6;
+
+  /* dark colors */
+
+  --background-color-dark: #121212;
+  --card-background-dark: #333;
+  --card-border-dark: #111;
+  --font-color-dark: #fff;
+  --card-hover-dark: #383838;
+  --menu-hover-dark: #3c3c3c;
+  --light-gray-dark: #eee;
 }

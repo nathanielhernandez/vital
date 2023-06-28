@@ -61,4 +61,22 @@ const getOffersByUserID = async (req, res) => {
   let result = Offer.find({ businessID: user }).sort({ createdAt: "desc" });
 };
 
-export { postOffer, getOffer, getOffers, getOffersByUserID };
+const updateOffer = async (req, res) => {
+  const offerID = req.params.offerID;
+  const updateOffer = req.body;
+
+  collection.updateOne(
+    { _id: ObjectId(offerID) },
+    { $set: updateOffer },
+    (err, result) => {
+      if (err) {
+        console.err("Failed to update the record: ", err);
+        res.status(500).send("Failed to update the record");
+        return;
+      }
+      res.send("Record updated succesfully");
+    }
+  );
+};
+
+export { postOffer, getOffer, getOffers, getOffersByUserID, updateOffer };

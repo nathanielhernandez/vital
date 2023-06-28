@@ -57,45 +57,49 @@ input:active {
 
 .card {
   height: fit-content;
-  background-color: var(--white);
+  background-color: var(--card-background-dark);
   border-radius: var(--border-radius-10);
-  border: 1px solid var(--border-card);
+  border: 1px solid var(--card-border-dark);
   padding: 1.25em;
   transition: all 1s ease-in-out;
 }
 
 .card-top {
   height: fit-content;
-  background-color: var(--white);
+  background-color: var(--card-background-dark);
   border-radius: var(--border-radius-10) var(--border-radius-10) 0 0;
-  border: 1px solid var(--border-card);
+  border: 1px solid var(--card-border-dark);
   border-bottom: 0;
   padding: 1.25em;
 }
 
 .card-middle {
   height: fit-content;
-  background-color: var(--white);
-  border: 1px solid var(--border-card);
+  background-color: var(--card-background-dark);
+  border: 1px solid var(--card-border-dark);
   border-bottom: 0;
   padding: 1.25em;
 }
 
 .card-bottom {
   height: fit-content;
-  background-color: var(--white);
+  background-color: var(--card-background-dark);
   border-radius: 0 0 var(--border-radius-10) var(--border-radius-10);
-  border: 1px solid var(--border-card);
+  border: 1px solid var(--card-border-dark);
   padding: 1.25em;
 }
 
 .card-actionable {
-  background-color: var(--white);
+  background-color: var(--card-background-dark);
 }
 
 .card-actionable:hover {
-  background-color: var(--hover-light);
+  background-color: var(--card-hover-dark);
   transition: all var(--transition);
+}
+
+a.card {
+  color: var(--font-color-dark);
 }
 
 .fixed {
@@ -266,13 +270,13 @@ a:hover {
   text-decoration: none;
 }
 
-a:visited {
-  color: black;
+/* a:visited {
+  color: var(--vital-teal);
 }
 
 a.standard {
   color: var(--vital-teal);
-}
+} */
 
 a.tag {
   height: 24px;
@@ -329,12 +333,12 @@ li.sidebar-item {
   height: 2.5em;
   list-style: none;
   padding: 0.5em 1.25em;
-  color: var(--dark-gray);
+  color: var(--font-color-dark);
   font-weight: 600;
 }
 
 li.sidebar-item:hover {
-  background-color: var(--hover-light);
+  background-color: var(--menu-hover-dark);
 }
 
 ul.profile-nav {

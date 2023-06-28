@@ -9,6 +9,7 @@ nav {
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0 1.25em;
   top: 0;
+  background-color: var(--background-color-dark);
 }
 
 nav.home-screen {

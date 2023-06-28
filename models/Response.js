@@ -14,6 +14,10 @@ const ResponseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    businessID: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
