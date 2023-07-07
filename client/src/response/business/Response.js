@@ -4,13 +4,25 @@ import { useAppContext } from "../../context/appContext";
 
 import axios from "axios";
 
-const Response = ({ response }) => {
+const Response = ({ response, fetchResponses, offerId }) => {
   const [user, setUser] = useState([]);
   const { isLoading } = useAppContext();
   const fetchUser = async (id) => {
     try {
       const { data } = await axios.get(`/api/v1/user/${id}`);
       setUser(data);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  const handleAccept = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.patch(`/api/v1/response/updateresponse/${response._id}`, {
+        accepted: true,
+      });
+      fetchResponses(offerId);
     } catch (error) {
       throw new Error(error);
     }
@@ -33,7 +45,9 @@ const Response = ({ response }) => {
       </p>
 
       <div className={"response-buttons"}>
-        <button className="btn standard-btn">Accept</button>
+        <button className="btn standard-btn" onClick={handleAccept}>
+          Accept
+        </button>
         <button className="btn btn-tertiary standard-btn">Reject</button>
       </div>
     </div>

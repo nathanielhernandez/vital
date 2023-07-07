@@ -39,13 +39,23 @@ const ViewResponses = () => {
               if (responses.length === index + 1) {
                 return (
                   <div className="card-bottom">
-                    <Response key={response._id} response={response} />
+                    <Response
+                      key={response._id}
+                      response={response}
+                      fetchResponses={fetchResponses}
+                      offerId={id}
+                    />
                   </div>
                 );
               } else {
                 return (
                   <div className="card-middle">
-                    <Response key={response._id} response={response} />
+                    <Response
+                      key={response._id}
+                      response={response}
+                      fetchResponses={fetchResponses}
+                      offerID={id}
+                    />
                   </div>
                 );
               }

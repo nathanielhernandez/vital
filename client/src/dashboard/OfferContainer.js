@@ -35,7 +35,9 @@ const OfferContainer = () => {
 
   return (
     <div className="form-layout-left-aligned no-gap">
-      {isModalOpen && <ModalWrapper component={<PostOffer />} />}
+      {isModalOpen && (
+        <ModalWrapper component={<PostOffer />} function={useGetOffers} />
+      )}
       {user.accountType === "Business" && <PostOffersButton />}
 
       <div className="card-top">
