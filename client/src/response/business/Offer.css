@@ -1,0 +1,10 @@
+.response-count {
+    position: absolute;
+    width: auto;
+    padding: 1em 1.5em;
+    background-color: var(--vital-orange);
+    right: -1.25em;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: var(--border-radius-10) 0 0 var(--border-radius-10);
+}

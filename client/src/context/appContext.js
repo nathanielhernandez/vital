@@ -26,6 +26,12 @@ import {
   POST_TAGS_BEGIN,
   POST_TAGS_SUCCESS,
   POST_TAGS_ERROR,
+  POST_RESPONSE_BEGIN,
+  POST_RESPONSE_SUCCESS,
+  POST_RESPONSE_ERROR,
+  GET_OFFERS_BY_ID_BEGIN,
+  GET_OFFERS_BY_ID_SUCCESS,
+  GET_OFFERS_BY_ID_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -75,8 +81,6 @@ const AppProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("location");
   };
-
-  const postResponse = asyync();
 
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
@@ -156,10 +160,10 @@ const AppProvider = ({ children }) => {
         offerID = response.data._id;
       });
       postTags(tags, offerID);
-      dispatch({ type: POST_OFFER_SUCCESS });
       setTimeout(() => {
         closeModal();
       }, 1000);
+      dispatch({ type: POST_OFFER_SUCCESS });
     } catch (error) {
       dispatch({
         type: POST_OFFER_ERROR,
@@ -169,10 +173,30 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const getOffers = async () => {
+  const postResponse = async (response) => {
+    dispatch({ type: POST_RESPONSE_BEGIN });
+    try {
+      let responseID = "";
+      await axios
+        .post("/api/v1/response/postresponse", response)
+        .then((response) => {
+          responseID = response.data._id;
+        });
+      dispatch({ type: POST_RESPONSE_SUCCESS });
+      setTimeout(() => {}, 1000);
+    } catch (error) {
+      dispatch({
+        type: POST_RESPONSE_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
+
+  const getOffers = async (id) => {
     dispatch({ type: GET_OFFERS_BEGIN });
     try {
-      const { data } = await axios.get("/api/v1/offer/getoffers");
+      const { data } = await axios.get(`/api/v1/offer/getoffers/`);
       const { offers, totalOffers } = data;
       dispatch({
         type: GET_OFFERS_SUCCESS,
@@ -184,6 +208,24 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: GET_OFFERS_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+  };
+
+  const getOffersByUserID = async (id) => {
+    dispatch({ type: GET_OFFERS_BY_ID_BEGIN });
+    try {
+      const { offers } = await axios.get(`/api/v1/offer/getoffersbyuser/${id}`);
+      dispatch({
+        type: GET_OFFERS_BY_ID_SUCCESS,
+        payload: {
+          offers,
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_OFFERS_BY_ID_ERROR,
         payload: { msg: error.response.data.msg },
       });
     }
@@ -222,7 +264,9 @@ const AppProvider = ({ children }) => {
         registerUserPasswordMismatch,
         logoutUser,
         getOffers,
+        getOffersByUserID,
         postOffer,
+        postResponse,
         getUser,
         openModal,
         closeModal,

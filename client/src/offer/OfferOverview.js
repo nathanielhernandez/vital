@@ -10,12 +10,20 @@ import axios from "axios";
 import parse from "html-react-parser";
 import OfferOverviewDetails from "./OfferOverviewDetails";
 
+const responseInitialState = {
+  offerID: "",
+  responseDetails: "",
+  userID: "",
+  businessID: "",
+};
+
 const OfferOverview = () => {
-  const { user } = useAppContext();
+  const { user, postResponse, isLoading } = useAppContext();
   const { id } = useParams();
 
   const [offer, setOffer] = useState([]);
   const [business, setBusiness] = useState([]);
+  const [response, setResponse] = useState(responseInitialState);
 
   const fetchOffer = async (id) => {
     try {
@@ -37,13 +45,13 @@ const OfferOverview = () => {
     }
   };
 
-  const postResponse = async();
-
-  const handleResponse = (e) => {
+  const handleResponse = async (e) => {
     e.preventDefault();
-    if (offer.allowedContracts > 0) {
-      console.log(true);
-    }
+    response.businessID = offer.businessID;
+    response.offerID = offer._id;
+    response.userID = user._id;
+    response.responseDetails = "testing response";
+    postResponse(response);
   };
 
   useEffect(() => {

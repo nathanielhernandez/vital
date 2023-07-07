@@ -8,7 +8,6 @@ const useGetOffers = (pageNumber, businessID) => {
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
-    console.log(businessID);
     setLoading(true);
     setError(false);
     axios({
@@ -24,7 +23,6 @@ const useGetOffers = (pageNumber, businessID) => {
         setLoading(false);
       })
       .catch((e) => console.log(e));
-    console.log(offers);
   }, [pageNumber]);
 
   return { loading, error, offers, hasMore };

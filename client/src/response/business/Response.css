@@ -1,0 +1,6 @@
+.response-buttons {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}

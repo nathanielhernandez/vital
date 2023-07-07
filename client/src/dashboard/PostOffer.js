@@ -4,6 +4,8 @@ import DOMPurify from "dompurify";
 
 import AddTags from "./AddTags";
 import OfferRichText from "./OfferRichText";
+import Input from "../components/input/Input";
+import OfferInput from "../components/input/OfferInput";
 
 import "./PostOffer.css";
 
@@ -28,7 +30,8 @@ const defaultOptions = {
 };
 
 const PostOffer = () => {
-  const { user, postOffer } = useAppContext();
+  const { user, postOffer, isLoading, showAlert, displayAlert } =
+    useAppContext();
   const [offer, setOffer] = useState(offerInitialState);
   const [tags, setTags] = useState([]);
 
@@ -39,6 +42,12 @@ const PostOffer = () => {
     offer.businessID = user._id;
     console.log(offer);
     postOffer(offer, tags);
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    let value = e.target.value;
+    setOffer({ ...offer, [e.target.name]: value });
   };
 
   const sanatizeHTML = (value) => {
@@ -57,11 +66,37 @@ const PostOffer = () => {
           />
           <h6>{user.businessName}</h6>
         </div>
-        <AddTags tags={tags} setTags={setTags} />
-        <p className="bold">Offer Title</p>
-        <input className="input large-input"></input>
+        <OfferInput
+          type={"text"}
+          name={"offerTitle"}
+          value={offer.offerTitle}
+          handleChange={handleChange}
+          className={"offer-title-input"}
+          placeholder={"Add a title..."}
+        />
+        <div className="form-layout-horizontal">
+          <OfferInput
+            type={"text"}
+            name={"reward"}
+            value={offer.reward}
+            handleChange={handleChange}
+            className={"offer-reward-input"}
+            placeholder={"Add a reward..."}
+          />
+          <OfferInput
+            type={"number"}
+            name={"allowedContracts"}
+            value={offer.allowedContracts}
+            handleChange={handleChange}
+            className={"offer-reward-input"}
+            placeholder={"Number of allowed contracts..."}
+          />
+        </div>
         <p className="bold">Offer Overview</p>
-        <OfferRichText setOffer={setOffer} offer={offer} />
+        <div className="form-layout-centered">
+          <OfferRichText setOffer={setOffer} offer={offer} />
+          <AddTags tags={tags} setTags={setTags} />
+        </div>
         <div className="form-layout-horizontal-right-aligned">
           <button className="btn standard-btn" onClick={handlePostOffer}>
             Post

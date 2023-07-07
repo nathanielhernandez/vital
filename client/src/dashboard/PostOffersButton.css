@@ -5,4 +5,5 @@ button.card-button {
   color: var(--light-gray);
   border: none;
   text-align: left;
+  margin-bottom: 1.25em;
 }

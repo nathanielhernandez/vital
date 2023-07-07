@@ -88,7 +88,9 @@ const Navbar = (props) => {
   if (isLoggedIn) {
     return (
       <nav>
-        <h4 className="logo">Vital</h4>
+        <Link to={"/"}>
+          <h4 className="logo">Vital</h4>
+        </Link>
         <input
           type="text"
           className="input large-input"

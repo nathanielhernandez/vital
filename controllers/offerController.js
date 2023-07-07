@@ -6,15 +6,15 @@ const postOffer = async (req, res) => {
   const { businessID, offerTitle, reward, offerDetails, allowedContracts } =
     req.body;
 
-  // if (
-  //   !businessID ||
-  //   !offerTitle ||
-  //   !reward ||
-  //   !offerDetails ||
-  //   !allowedContracts
-  // ) {
-  //   throw new BadRequestError("Please provide all values");
-  // }
+  if (
+    !businessID ||
+    !offerTitle ||
+    !reward ||
+    !offerDetails ||
+    !allowedContracts
+  ) {
+    throw new BadRequestError("Please provide all values");
+  }
 
   const offer = await Offer.create({
     businessID,
@@ -57,8 +57,11 @@ const getOffers = async (req, res) => {
 };
 
 const getOffersByUserID = async (req, res) => {
-  const user = req.query.user;
-  let result = Offer.find({ businessID: user }).sort({ createdAt: "desc" });
+  let offers = await Offer.find({ businessID: req.params.userid }).sort({
+    createdAt: "desc",
+  });
+
+  res.send(offers);
 };
 
 const updateOffer = async (req, res) => {

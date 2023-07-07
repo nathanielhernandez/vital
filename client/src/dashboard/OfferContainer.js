@@ -26,10 +26,12 @@ const OfferContainer = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [loading, hasMore, isModalOpen]
   );
 
-  useEffect(() => {}, [isModalOpen]);
+  // useEffect(() => {
+  //   useGetOffers(pageNumber);
+  // }, [isModalOpen]);
 
   return (
     <div className="form-layout-left-aligned no-gap">
@@ -48,7 +50,7 @@ const OfferContainer = () => {
               <div
                 ref={lastOffer}
                 key={offer._id}
-                className="card-middle card-actionable"
+                className="card-bottom card-actionable"
               >
                 <Link to={`/offer/${offer._id}`}>
                   <Offer offer={offer} />
@@ -56,13 +58,18 @@ const OfferContainer = () => {
               </div>
             );
           } else {
-            return <Offer offer={offer} key={offer._id} />;
+            return (
+              <div key={offer._id} className="card-middle card-actionable">
+                <Link to={`/offer/${offer._id}`}>
+                  <Offer offer={offer} key={offer._id} />
+                </Link>
+              </div>
+            );
           }
         })
       )}
       <div>{loading && <SpinningLoader />}</div>
       <div>{error && `Error`}</div>
-      <div className="card-bottom"></div>
     </div>
   );
 };

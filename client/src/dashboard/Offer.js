@@ -72,7 +72,7 @@ const Offer = (props) => {
 
         <div className="form-layout-horizontal-centered">
           <FiGift className="vital-orange" />
-          <p className="semibold">Two Alefort Drink Tokens</p>
+          <p className="semibold">{offer.reward}</p>
         </div>
 
         <div className="light-gray">{parse(offer.offerDetails)}</div>
@@ -82,15 +82,6 @@ const Offer = (props) => {
             return <Tag tag={tag.tagValue} key={tag._id} />;
           })}
         </div>
-        {/* <div className="form-layout-horizontal-right-aligned">
-          {user.accountType === "Business" ? (
-            <BusinessOfferButtons offer={offer} />
-          ) : (
-            <button className="btn standard-btn" onClick={handleResponse}>
-              Respond to Offer
-            </button>
-          )}
-        </div> */}
       </div>
     </div>
   );

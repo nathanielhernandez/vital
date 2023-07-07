@@ -12,11 +12,17 @@ import {
   GET_OFFERS_BEGIN,
   GET_OFFERS_SUCCESS,
   GET_OFFERS_ERROR,
+  GET_OFFERS_BY_ID_BEGIN,
+  GET_OFFERS_BY_ID_SUCCESS,
+  GET_OFFERS_BY_ID_ERROR,
   OPEN_MODAL,
   CLOSE_MODAL,
   POST_OFFER_BEGIN,
   POST_OFFER_SUCCESS,
   POST_OFFER_ERROR,
+  POST_RESPONSE_BEGIN,
+  POST_RESPONSE_SUCCESS,
+  POST_RESPONSE_ERROR,
   GET_USER_BEGIN,
   GET_USER_SUCCESS,
   GET_USER_ERROR,
@@ -144,6 +150,31 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === GET_OFFERS_BY_ID_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === GET_OFFERS_BY_ID_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      offers: action.payload.offers,
+    };
+  }
+
+  if (action.type === GET_OFFERS_BY_ID_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
+    };
+  }
+
   if (action.type === POST_TAGS_BEGIN) {
     return {
       ...state,
@@ -192,6 +223,27 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: "danger",
       alertText: "An error has occured.",
+    };
+  }
+
+  if (action.type === POST_RESPONSE_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === POST_RESPONSE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+    };
+  }
+
+  if (action.type === POST_RESPONSE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
     };
   }
 
