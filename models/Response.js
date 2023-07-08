@@ -4,27 +4,31 @@ const ResponseSchema = new mongoose.Schema(
   {
     offerID: {
       type: String,
-      required: true,
+      required: true
     },
     responseDetails: {
       type: String,
-      required: true,
+      required: true
     },
     userID: {
       type: String,
-      required: true,
+      required: true
     },
     businessID: {
       type: String,
-      required: true,
+      required: true
     },
     accepted: {
       type: Boolean,
-      default: false,
+      default: false
     },
+    rejected: {
+      type: Boolean,
+      default: false
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

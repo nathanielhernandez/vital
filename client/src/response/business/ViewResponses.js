@@ -7,6 +7,9 @@ import { useAppContext } from "../../context/appContext";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import ModalWrapper from "../../components/modal/ModalWrapper";
+import SignUp from "../../signup/SignUp";
+
 const ViewResponses = () => {
   const { user } = useAppContext();
   const { id } = useParams();

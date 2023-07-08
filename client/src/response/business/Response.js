@@ -6,7 +6,9 @@ import axios from "axios";
 
 const Response = ({ response, fetchResponses, offerId }) => {
   const [user, setUser] = useState([]);
-  const { isLoading } = useAppContext();
+  const [reject, setReject] = useState(false);
+  const { isLoading, openModal, isModalOpen } = useAppContext();
+
   const fetchUser = async (id) => {
     try {
       const { data } = await axios.get(`/api/v1/user/${id}`);
@@ -20,7 +22,23 @@ const Response = ({ response, fetchResponses, offerId }) => {
     e.preventDefault();
     try {
       await axios.patch(`/api/v1/response/updateresponse/${response._id}`, {
-        accepted: true,
+        accepted: true
+      });
+      fetchResponses(offerId);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  const changeToRejectOptions = () => {
+    setReject(!reject);
+  };
+
+  const handleReject = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.patch(`/api/v1/response/updateresponse/${response._id}`, {
+        rejected: true
       });
       fetchResponses(offerId);
     } catch (error) {
@@ -30,7 +48,7 @@ const Response = ({ response, fetchResponses, offerId }) => {
 
   useEffect(() => {
     fetchUser(response.userID);
-  }, []);
+  }, [reject]);
 
   return (
     <div className="form-layout-horizontal-centered">
@@ -44,12 +62,34 @@ const Response = ({ response, fetchResponses, offerId }) => {
         {user.firstName} {user.lastName}
       </p>
 
-      <div className={"response-buttons"}>
-        <button className="btn standard-btn" onClick={handleAccept}>
-          Accept
-        </button>
-        <button className="btn btn-tertiary standard-btn">Reject</button>
-      </div>
+      {!reject && (
+        <div className="response-buttons">
+          <button className="btn standard-btn" onClick={handleAccept}>
+            Accept
+          </button>
+          <button
+            className="btn btn-tertiary standard-btn"
+            onClick={changeToRejectOptions}
+          >
+            Reject
+          </button>
+        </div>
+      )}
+
+      {reject && (
+        <div className="response-buttons">
+          <p>Are you sure you want to reject this offer?</p>
+          <button className="btn standard-btn" onClick={handleReject}>
+            Yes
+          </button>
+          <button
+            className="btn btn-tertiary standard-btn"
+            onClick={changeToRejectOptions}
+          >
+            No
+          </button>
+        </div>
+      )}
     </div>
   );
 };

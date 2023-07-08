@@ -14,7 +14,7 @@ const postResponse = async (req, res) => {
     offerID,
     responseDetails,
     userID,
-    businessID,
+    businessID
   });
 
   res.status(StatusCodes.CREATED).json({
@@ -22,14 +22,18 @@ const postResponse = async (req, res) => {
     offerID: response.offerID,
     responseDetails: response.responseDetails,
     userID: response.userID,
-    businessID: response.businessID,
+    businessID: response.businessID
   });
 };
 
 const getResponseByOfferID = async (req, res) => {
   try {
     const { offerID } = req.params;
-    const response = await Response.find({ offerID: offerID, accepted: false });
+    const response = await Response.find({
+      offerID: offerID,
+      accepted: false,
+      rejected: false
+    });
     res.send(response);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error });
