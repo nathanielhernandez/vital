@@ -40,7 +40,9 @@ const BusinessSidebar = () => {
             <Link to={"/"}>
               <li className="sidebar-item extrabold">Dashboard</li>
             </Link>
-            <li className="sidebar-item">Contracts</li>
+            <Link to={"/contracts"}>
+              <li className="sidebar-item">Contracts</li>
+            </Link>
             <Link to={`/response`}>
               <li className="sidebar-item">Responses</li>
             </Link>

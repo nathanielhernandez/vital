@@ -22,7 +22,13 @@ const Response = ({ response, fetchResponses, offerId }) => {
     e.preventDefault();
     try {
       await axios.patch(`/api/v1/response/updateresponse/${response._id}`, {
-        accepted: true
+        accepted: true,
+      });
+
+      await axios.post(`/api/v1/contract/postcontract`, {
+        businessID: response.businessID,
+        userID: response.userID,
+        offerID: response.offerID,
       });
       fetchResponses(offerId);
     } catch (error) {
@@ -38,7 +44,7 @@ const Response = ({ response, fetchResponses, offerId }) => {
     e.preventDefault();
     try {
       await axios.patch(`/api/v1/response/updateresponse/${response._id}`, {
-        rejected: true
+        rejected: true,
       });
       fetchResponses(offerId);
     } catch (error) {

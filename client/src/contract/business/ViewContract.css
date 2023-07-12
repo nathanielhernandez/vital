@@ -1,0 +1,29 @@
+.contract-chat-dashboard-container {
+    width: 100%;
+    padding: 1.25em 0;
+    display: inline-grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 1.25em;
+}
+
+.contract-chat-container {
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.chat-thread-list {
+    border-right: 1px solid var(--card-border-dark);
+}
+
+.chat-thread {
+    height: auto;
+    padding: 1.25em;
+    border-bottom: 1px solid var(--card-border-dark);
+}
+
+.chat-timestamp {
+    justify-content: right;
+}

@@ -1,0 +1,25 @@
+.message {
+    padding: 0.75em;
+    display: flex;
+    border-radius: var(--border-radius-10);
+    flex-wrap: wrap;
+}
+
+.message-received {
+    background-color: var(--gray);
+}
+
+/* .message-received:before {
+    content: '';
+    width: 1em;
+    height: 0.5em;
+    position: absolute;
+    bottom: -0.5em;
+    clip-path: polygon(0 0, 0% 100%, 100% 0);
+    background-color: var(--gray);
+} */
+
+.message-sent {
+    background-color: var(--vital-teal);
+    justify-content: right;
+}

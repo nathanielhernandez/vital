@@ -11,6 +11,8 @@ import Profile from "./profile/Profile";
 import OfferOverview from "./offer/OfferOverview";
 import ResponseDashboard from "./response/business/ResponseDashboard";
 import ViewResponses from "./response/business/ViewResponses";
+import ContractDashboard from "./contract/business/ContractDashboard";
+import ViewContract from "./contract/business/ViewContract";
 
 function App() {
   const { user } = useAppContext();
@@ -23,6 +25,8 @@ function App() {
       )}
       <Route path="/response" element={<ResponseDashboard />} />
       <Route path="/response/:id" element={<ViewResponses />} />
+      <Route path="/contracts" element={<ContractDashboard />} />
+      <Route path="/contracts/:id" element={<ViewContract />} />
       <Route path="/user/:id" element={<Profile />} />
       <Route path="/offer/:id" element={<OfferOverview />} />
       <Route path="/offer/:id/responses" element={<OfferResponses />} />

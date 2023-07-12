@@ -112,6 +112,14 @@ body {
   gap: 0;
 }
 
+.no-padding {
+  padding: 0 !important;
+}
+
+.padding-default {
+  padding: 1.25em;
+}
+
 .margin-left-auto {
   margin-left: auto;
 }

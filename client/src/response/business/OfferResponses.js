@@ -27,7 +27,6 @@ const OfferResponses = (props) => {
     try {
       const { data } = await axios.get(`/api/v1/response/getresponses/${id}`);
       setResponses(data);
-      console.log(responses);
     } catch (error) {
       throw new Error(error);
     }
