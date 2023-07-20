@@ -4,10 +4,10 @@ import React from "react";
 
 import "./Message.css";
 
-const MessageSent = () => {
+const MessageSent = ({ message }) => {
   return (
     <div className="message message-sent">
-      <p>Hello this is a sent message!</p>
+      <p>{message}</p>
     </div>
   );
 };

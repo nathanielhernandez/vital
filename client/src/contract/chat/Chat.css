@@ -4,7 +4,17 @@
     border-bottom: 1px solid var(--card-border-dark);
 }
 
-.chat-input {
+.chat-input-container {
     padding: 1.25em;
     border-top: 1px solid var(--card-border-dark);
+    display: flex;
+}
+
+.chat-body {
+    justify-content: flex-end;
+}
+
+.chat-input {
+    width: 100%;
+    padding: 0.75em;
 }

@@ -6,29 +6,17 @@ import axios from "axios";
 
 import ChatThread from "./ChatThread";
 
-const ChatThreadList = () => {
-  const [contractList, setContractList] = useState([]);
-  const { id } = useParams();
-
-  const fetchContracts = async (id) => {
-    try {
-      const { data } = await axios.get(
-        `/api/v1/contract/getcontractsbyoffer/${id}`
-      );
-      setContractList(data);
-    } catch (error) {
-      throw new Error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchContracts(id);
-  }, []);
-
+const ChatThreadList = ({ setFocusedContract, contractList, joinRoom }) => {
   return (
     <div className="chat-thread-list">
       {contractList.map((contract, index) => {
-        return <ChatThread key={contract._id} contract={contract} />;
+        return (
+          <ChatThread
+            key={contract._id}
+            contract={contract}
+            setFocusedContract={setFocusedContract}
+          />
+        );
       })}
     </div>
   );

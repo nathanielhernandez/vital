@@ -223,7 +223,7 @@ a.card {
 }
 
 .radio-switch label {
-  background-color: var(--white);
+  background-color: var(--card-background-dark);
   color: var(--vital-teal);
   font-size: 1em;
   font-weight: 500;

@@ -6,33 +6,36 @@ import { socket } from "../../socket";
 import MessageReceived from "./messages/MessageReceived";
 import MessageSent from "./messages/MessageSent";
 
-const initialMessageList = {
-  message: "",
-};
+// const initialMessageList = [
 
-const ChatBody = () => {
-  const [messageList, setMessageList] = useState("");
+// ];
+
+const ChatBody = ({ focusedContract }) => {
+  const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-    socket.on("send_message", (data) => {
-      setMessageList(data);
+    socket.on("receive_message", (data) => {
+      setMessageList((messageList) => [...messageList, data]);
       console.log(messageList);
-      console.log(data.message);
     });
 
     return () => {
-      socket.off("send_message");
+      socket.off("receive_message");
     };
-  }, []);
+  }, [socket]);
 
   return (
-    <div className="padding-default form-layout-vertical-left-aligned">
-      <div className="form-layout-left-aligned">
+    <div className="padding-default form-layout-vertical-left-aligned height-100 chat-body">
+      {/* <div className="form-layout-left-aligned">
         <MessageReceived />
-      </div>
-      <div className="form-layout-horizontal-right-aligned">
-        <MessageSent />
-      </div>
+      </div> */}
+      {messageList.map((message, index) => {
+        return (
+          <div key={index} className="form-layout-horizontal-right-aligned">
+            <MessageSent message={message.message} />
+          </div>
+        );
+      })}
     </div>
   );
 };
