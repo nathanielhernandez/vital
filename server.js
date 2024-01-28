@@ -24,26 +24,41 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 
 // SocketIO
 import { Server } from "socket.io";
+
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+  },
+});
+
+io.use((socket, next) => {
+  const username = socket.handshake.auth.username;
+  if (!username) {
+    return next(new Error("Error"));
   }
+  socket.username = username;
+  console.log(`user connected with id ${socket.uername}`);
+  next();
 });
 
-io.on("connection", (socket) => {
-  console.log(`Socket.IO User has connected: ${socket.id}`);
-
-  socket.on("join_room", (room) => {
-    socket.join(room);
-    console.log(`User has joined: ${room}`);
-  });
-
-  socket.on("send_message", (data) => {
-    console.log(data);
-    socket.emit("receive_message", data);
-  });
+io.on("connection", async (socket) => {
+  console.log("connection");
 });
+
+// io.on("connection", (socket) => {
+//   console.log(`Socket.IO User has connected: ${socket.id}`);
+
+//   socket.on("join_room", (room) => {
+//     socket.join(room);
+//     console.log(`User has joined: ${room}`);
+//   });
+
+//   socket.on("send_message", (data) => {
+//     console.log(data);
+//     socket.emit("receive_message", data);
+//   });
+// });
 
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));

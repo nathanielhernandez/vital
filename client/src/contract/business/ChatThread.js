@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAppContext } from "../../context/appContext";
 import axios from "axios";
-import { socket } from "../../socket";
+import socket from "../../socket";
 
 const ChatThread = (props) => {
   const [contractUser, setContractUser] = useState([]);

@@ -1,6 +1,7 @@
 import React, { useReducer, useContext } from "react";
 import reducer from "./reducer";
 import axios from "axios";
+import socket from "../socket";
 import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
@@ -31,7 +32,7 @@ import {
   POST_RESPONSE_ERROR,
   GET_OFFERS_BY_ID_BEGIN,
   GET_OFFERS_BY_ID_SUCCESS,
-  GET_OFFERS_BY_ID_ERROR
+  GET_OFFERS_BY_ID_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -49,7 +50,7 @@ const initialState = {
   offers: [],
   totalOffers: null,
   offersPageNumber: 1,
-  isModalOpen: false
+  isModalOpen: false,
 };
 
 const AppContext = React.createContext();
@@ -65,7 +66,7 @@ const AppProvider = ({ children }) => {
   const clearAlert = () => {
     setTimeout(() => {
       dispatch({
-        type: CLEAR_ALERT
+        type: CLEAR_ALERT,
       });
     }, 3000);
   };
@@ -82,6 +83,12 @@ const AppProvider = ({ children }) => {
     localStorage.removeItem("location");
   };
 
+  const onLoginSocket = (id) => {
+    console.log("loging in");
+    socket.auth = { id };
+    socket.connect();
+  };
+
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
@@ -89,14 +96,14 @@ const AppProvider = ({ children }) => {
       const { user, token, location } = response.data;
       dispatch({
         type: REGISTER_USER_SUCCESS,
-        payload: { user, token, location }
+        payload: { user, token, location },
       });
 
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
       dispatch({
         type: REGISTER_USER_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -112,15 +119,17 @@ const AppProvider = ({ children }) => {
       const { user, token } = response.data;
       dispatch({
         type: LOGIN_USER_SUCCESS,
-        payload: { user, token }
+        payload: { user, token },
       });
+
+      onLoginSocket(user._id);
 
       addUserToLocalStorage({ user, token });
     } catch (error) {
       // console.log(error.response);
       dispatch({
         type: LOGIN_USER_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -142,13 +151,13 @@ const AppProvider = ({ children }) => {
       try {
         await axios.post("/api/v1/tag/posttag", {
           tagValue: tag,
-          offerID: offerID
+          offerID: offerID,
         });
         dispatch({ type: POST_TAGS_SUCCESS });
       } catch (error) {
         dispatch({
           type: POST_TAGS_ERROR,
-          payload: { msg: error.response.data.msg }
+          payload: { msg: error.response.data.msg },
         });
       }
     });
@@ -169,7 +178,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: POST_OFFER_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -189,7 +198,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: POST_RESPONSE_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -204,13 +213,13 @@ const AppProvider = ({ children }) => {
         type: GET_OFFERS_SUCCESS,
         payload: {
           offers,
-          totalOffers
-        }
+          totalOffers,
+        },
       });
     } catch (error) {
       dispatch({
         type: GET_OFFERS_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
   };
@@ -222,13 +231,13 @@ const AppProvider = ({ children }) => {
       dispatch({
         type: GET_OFFERS_BY_ID_SUCCESS,
         payload: {
-          offers
-        }
+          offers,
+        },
       });
     } catch (error) {
       dispatch({
         type: GET_OFFERS_BY_ID_ERROR,
-        payload: { msg: error.response.data.msg }
+        payload: { msg: error.response.data.msg },
       });
     }
   };
@@ -271,7 +280,7 @@ const AppProvider = ({ children }) => {
         postResponse,
         getUser,
         openModal,
-        closeModal
+        closeModal,
       }}
     >
       {children}

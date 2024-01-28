@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Chat.css";
-import { socket } from "../../socket";
+import socket from "../../socket";
 
 const ChatInput = () => {
   const [message, setMessage] = useState([]);

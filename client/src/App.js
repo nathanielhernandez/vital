@@ -16,6 +16,7 @@ import ViewContract from "./contract/business/ViewContract";
 
 function App() {
   const { user } = useAppContext();
+
   return (
     <Routes>
       {user ? (
