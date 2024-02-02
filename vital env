@@ -1,4 +1,0 @@
-PORT=4000
-MONGO_URL=mongodb+srv://nathaniel:iZDW0uCwAv3pGE2g@vitalcluster.jvou4.mongodb.net/vitalDatabase?retryWrites=true&w=majority
-JWT_SECRET=p2s5v8y/B?E(H+MbQeThWmZq3t6w9z$C
-JWT_LIFETIME=86400
